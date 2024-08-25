@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="Active_link.css">
+    <!-- <script src="Active_link.js"></script> -->
+</head>
+
+<body>
+    <header>
+        <a href="#" class="logo">Logo</a>
+        <nav>
+            <a href="#home" style="--clr: #1ca2e1;" class="active">Home</a>
+            <a href="#about" style="--clr: rgb(12, 196, 18);">About</a>
+            <a href="#service" style="--clr: rgb(45, 48, 200);">Service</a>
+            <a href="#portfolio" style="--clr: rgb(214, 34, 211);">Portfolio</a>
+            <a href="#contact" style="--clr: rgb(189, 205, 12);">Contact</a>
+        </nav>
+    </header>
+    <section id="home" style="--clr:  #1ca2e1">Home</section>
+    <section id="about" style="--clr: rgb(6, 59, 15);">About</section>
+    <section id="service" style="--clr: rgb(93, 15, 181);">Service</section>
+    <section id="portfolio" style="--clr: rgb(148, 11, 158);">Portfolio</section>
+    <section id="contact" style="--clr: rgb(170, 143, 12);">Contact</section>
+    <script>
+        let sec = document.querySelectorAll("section");
+        let links = document.querySelectorAll("nav a");
+
+        window.onscroll = () => {
+            sec.forEach(section => {
+                let top = window.scrollY;
+                let offset = section.offsetTop - 60;
+                let height = section.offsetHeight;
+                let id = section.getAttribute("id");
+
+                if (top >= offset && top < offset + height) 
+                {
+                    links.forEach(link => 
+                    {
+                        link.classlist.remove('active');
+                        document.querySelector('nav a[href*=' + id + ']').classList.add("active");
+                    })
+                }
+            })
+        };
+    </script>
+</body>
+
+</html>
